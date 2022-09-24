@@ -1,0 +1,51 @@
+.container {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 520px;
+  padding: .5rem;
+  overflow-y: auto;
+  background-color: #323232;
+  font-size: 2rem;
+  border-radius: 7px;
+
+  button {
+    position: relative;
+    margin-bottom: .3rem;
+    left: 40%;
+    background: none;
+    color: #fff;
+    transition: .5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 7px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+    background-color: orange;
+  }
+
+  p {
+    color: aliceblue;
+    margin: 1rem;
+    letter-spacing: 2px;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 95%;
+  }
+}
