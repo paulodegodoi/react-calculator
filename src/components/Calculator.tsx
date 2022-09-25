@@ -1,15 +1,17 @@
 import { useState } from "react"
-import styles from "../styles/Calculator.module.scss"
-import classNames from "classnames/bind"
 import { Historic } from "./Historic"
-import { ClockCounterClockwise, Backspace } from "phosphor-react"
+import classNames from "classnames/bind"
+import styles from "../styles/Calculator.module.scss"
+import { ClockCounterClockwise, Backspace, XCircle } from "phosphor-react"
 
 export function Calculator() {
-  const [data, setData] = useState("")
   const buttonsChars = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "."]
+
+  const [data, setData] = useState("")
   const [operations, setOperations] = useState([""])
   const [showHistoric, setShowHistoric] = useState(false)
-  let cx = classNames.bind(styles)
+
+  let cx = classNames.bind(styles) // way to use dynamic classes with css.module
 
   function calculate() {
     
@@ -43,9 +45,12 @@ export function Calculator() {
         <button 
           className={styles.btnHistoric}
           onClick={handleShowHistoric}
-          title="Histórico"
+          title={!showHistoric ? "Histórico" : "Fechar histórico"}
         >
-          <ClockCounterClockwise size={32} />
+          {!showHistoric ? 
+            <ClockCounterClockwise size={32} /> 
+            : <XCircle size={32} />
+          }
         </button>
       </div>
       
@@ -67,7 +72,8 @@ export function Calculator() {
             readOnly
             value={!data ? "0" : data}
           />
-        </div>     
+        </div> 
+        {/* Cleaning buttons */}
         <button 
           className={styles.ac}
           onClick={() => {setData("")}}
@@ -95,6 +101,7 @@ export function Calculator() {
           })}
           
         </div>
+        {/* Operating buttons */}
         <button 
           className={styles.operator}
           onClick={(e) => handleOperator(e)}
@@ -130,7 +137,6 @@ export function Calculator() {
           =
         </button>
       </div>
-        
     </div>
   )
 }

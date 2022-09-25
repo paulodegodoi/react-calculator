@@ -13,7 +13,10 @@ export function Historic({ sendOperations, clearHistoric }: sendOperationsProps)
 
   return (
     <div className={styles.container}>
-      <button onClick={clearHistoric}>
+      <button 
+        onClick={clearHistoric}
+        title="Limpar histórico"
+      >
         <Trash size={32} />
       </button>
       <div>
@@ -22,7 +25,7 @@ export function Historic({ sendOperations, clearHistoric }: sendOperationsProps)
             <p key={item}>{item}</p>
           )
         })
-        : <p>Histórico vazio</p>
+        : <p>Histórico vazio.</p>
         }
       </div>
     </div>
